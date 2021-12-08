@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>utility simplify state</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- import library -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+      // create virtual dom of class
+      class Person extends React.Component {
+        render() {
+            console.log(this);
+            const {name, age, sex} = this.props
+          return (
+            <ul>
+              <li>name: {name}</li>
+              <li>sex: {sex}</li>
+              <li>age: {age}</li>
+            </ul>
+          )
+        }
+      }
+      // render dom
+      let p ={name: 'tom', age: 24, sex: 'male'}
+      console.log('###',{...p});
+    //   ReactDOM.render(<Person name="jerry" age="2" sex="female" />, document.getElementById("test"))
+      ReactDOM.render(<Person {...p} />, document.getElementById("test"))
+      /*
+       props use html tag deliver key-value into component 
+      */
+    </script>
+  </body>
+</html>

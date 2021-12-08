@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo </title>
+    <style>
+        .out-div {
+            width: 120px;
+            height: 150px;
+            overflow: auto;
+            background-color: skyblue;
+        }
+        .news-item {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class="out-div">
+        <li class="news-item">new01</li>
+        <li class="news-item">new02</li>
+        <li class="news-item">new03</li>
+        <li class="news-item">new04</li>
+        <li class="news-item">new05</li>
+        <li class="news-item">new06</li>
+        <li class="news-item">new07</li>
+    </div>
+    <script type="text/javascript">
+        //scrollTop  滚动条到顶部的距离
+        
+        let outH = document.getElementsByClassName('out-div')[0];
+        console.log(outH.scrollTop);
+    </script>
+</body>
+</html>

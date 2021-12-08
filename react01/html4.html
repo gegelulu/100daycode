@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .title {
+        font-size: 32px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- import library -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <!-- js -->
+    <script type="text/javascript">
+      // let dom = React.createElement('h3',{id:'title'},'hello world')
+      let dom = React.createElement('h3',{id:'title'},React.createElement('span',{className:'title'},'test dom render'))
+      ReactDOM.render(dom, document.getElementById('test'))
+      console.log(dom,'virtual dom', document.getElementById('test'));
+      // virtual dom have less property 
+    </script>
+  </body>
+</html>

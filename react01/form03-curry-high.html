@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ref of string</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+    /*高级函数
+      1：以函数为参数
+      2：返回一个函数
+      函数柯里化
+      1：将多个参数简化为分次传入调用，并返回函数
+      function sum(a) {
+        return (b) => {
+          return (c) => {
+            return a + b +c
+          }
+        }
+      }
+      sum(1)(2)(3)
+      偏函数
+      将多个参数分解为1个和多个的形式调用 的“柯里化”
+    */
+      // create vdom
+      class Demo extends React.Component {
+        //init username passeord
+        state = {
+          username: "",
+          password: "",
+        }
+        //save username password
+        // saveUsername = (el) => {
+        //   this.setState({ username: el.target.value })
+        // }
+        // savePassword = (el) => {
+        //   this.setState({ password: el.target.value })
+        // }
+        saveData = (dataType) => {
+          //react 重新定义的方法必须是一个回调函数
+          return (el) => {
+            this.setState({[dataType]: el.target.value})
+          }
+        }
+        handleSubmit = (e) => {
+          e.preventDefault()
+          let {username, password} = this.state
+          alert("username: " + username + "\n" + "password: " + password)
+        }
+        render() {
+          return (
+            <form action="www.google.com" onSubmit={this.handleSubmit}>
+              username:
+              <input onChange={this.saveData('username')} type="text" name="username" />
+              password:
+              <input
+                onChange={this.saveData('password')}
+                type="password"
+                name="password"
+              />
+              <button>submit</button>
+            </form>
+          )
+        }
+      }
+      // render dom
+      ReactDOM.render(<Demo />, document.getElementById("root"))
+    </script>
+  </body>
+</html>

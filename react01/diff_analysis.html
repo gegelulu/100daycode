@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>life_circle_03</title>
+    <style>
+      .out-div {
+        height: 150px;
+        overflow: auto;
+      }
+      .news-item {
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+      //create component of functionality
+      class NewsList extends React.Component {
+        state = {
+          newsList: [
+            { name: "Bruce", age: 18, id: 1 },
+            { name: "Tom", age: 19, id: 2 },
+          ],
+        }
+        add = () => {
+          const {newsList} = this.state
+          let newOne = {name: "Jerry", age: 20, id:3}
+          this.setState({newsList: [newOne,...newsList]})
+        }
+        render() {
+          return (
+            <div>
+              <h3>use index as key</h3>
+              <ul className="out-div" ref="outer">
+                {this.state.newsList.map((item, index) => {
+                  return (
+                    <li className="news-item" key={index}>
+                      name: {item.name},age: {item.age}<input type="text"/>
+                    </li>
+                  )
+                })}
+              </ul>
+              <button onClick={this.add}>add someone</button>
+              <h3>use id as key</h3>
+              <ul className="out-div" ref="outer">
+                {this.state.newsList.map((item, index) => {
+                  return (
+                    <li className="news-item" key={item.id}>
+                      name: {item.name},age: {item.age}<input type="text"/>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        }
+      }
+      //render component
+      ReactDOM.render(<NewsList />, document.getElementById("root"))
+      // ReactDOM.render(<Fa />, document.getElementById("root"))
+
+      /*
+        
+        */
+    </script>
+  </body>
+</html>

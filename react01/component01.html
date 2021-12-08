@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>component01</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+      //create component of functionality
+      function Demo() {
+        return <h3>this a functionality component</h3>
+      }
+      //render component
+      ReactDOM.render(<Demo />, document.getElementById("root"))
+
+      /*
+        1. functionality component name first letter must uppercase  or the capital letter
+        2.must include by arrow tags in render function 
+        */
+    </script>
+  </body>
+</html>

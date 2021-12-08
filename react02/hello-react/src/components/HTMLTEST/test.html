@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .todo-box {
+      width: 300px;
+      margin: 0 auto;
+      border: 1px solid #eee;
+      padding: 6px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .todo-header {
+      /* background-color: #aaa; */
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #aaa;
+      margin-bottom: 6px;
+      padding: 2px;
+    }
+    .todo-item {
+      border: 1px solid #aaa;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 4px;
+      padding: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-box">
+    <div class="todo-header">
+      <input type="text" placeholder="请输入任务，按回车键确认"> <button>添加</button>
+    </div>
+    <div class="todo-list">
+      <p class="todo-item"><input type="checkbox"><span>吃饭</span><button>删除</button></p>
+      <p class="todo-item"><input type="checkbox"><span>睡觉</span><button>删除</button></p>
+      <p class="todo-item"><input type="checkbox"><span>跑步</span><button>删除</button></p>
+    </div>
+    <div class="todo-footer">
+      <input type="checkbox" id="footer" value=""><label for="footer">已完成0/未完成3</label>
+    </div>
+  </div>
+</body>
+</html>

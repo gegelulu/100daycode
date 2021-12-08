@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jsx rule</title>
+    <style>
+      .title {
+        color: #696;
+        background-color: orange;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+    /*
+      1.{} only use expression that can return a value
+      2.can't write code sentence not return value
+      react developer tools
+    */
+    let arr = ['React','Vue','Angular']
+      // create virtual dom
+      const vdom = (
+        <div>
+          <h3 className="title">
+            JS framework
+          </h3>
+          <ul>
+            {
+              arr.map((it,index) => {
+                return <li key={index}>{it}</li>
+              })
+            }
+          </ul>
+        </div>
+      )
+      // render dom
+      ReactDOM.render(vdom, document.getElementById("root"))
+      /*
+        1.only have one root tag
+        2.class must write as className
+        3.style attribute must use small camel,attribute must as key-value in two {{}}
+        4.the property in tag must use {}
+        5.don't use quote
+        6.tag must close
+        {} use wrap javascript sentence,
+      */
+    </script>
+  </body>
+</html>

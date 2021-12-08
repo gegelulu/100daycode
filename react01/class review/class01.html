@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class01:init extends</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Person {
+            constructor(name,age) {
+                this.name = name;
+                this.age = age;
+                this.school = "galliton universal"
+            }
+            speak() {
+                console.log(`My name is ${this.name},my age is ${this.age}`)
+            }
+            study() {
+                console.log('read write walk');
+            }
+        }
+        // let p1 = new Person('tom', 22);
+        // let p2 = new Person('jack', 24);
+        // console.log(p1+'\n'+p2);
+        // p1.speak()
+        // p2.speak()
+        class Student extends Person {
+            constructor(name,age,gender) {
+                super(name,age)
+                this.gender = gender
+            }
+            speak() {
+                console.log(`My name is ${this.name},my age is ${this.age},my gender is ${this.gender},my school is ${this.school}`)
+            }
+        }
+        let s1 = new Student('Harry',22,'male')
+        console.log( s1);
+        s1.speak()
+        s1.study()
+        
+    </script>
+</body>
+</html>

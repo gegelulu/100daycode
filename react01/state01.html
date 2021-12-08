@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- import library -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+      // create virtual dom of class
+      class MyComponent extends React.Component {
+        //class add new attribute use constructor function
+        constructor(props) {
+          //extends from React.Component
+          // super()
+          super(props)
+          //init key-value
+          this.state = { isHot: false }
+          //类中的方法要绑定到实例上才能被其他方法调用
+          this.demo = this.demo.bind(this)
+        }
+        demo() {
+            //this 指向调用函数的实例
+            //直接修改不生效 要使用 setState()
+            // this.state.isHot = !this.state.isHot
+            const n = this.state.isHot
+            this.setState({isHot: !n})
+            console.log(2222,this.state);
+            // 调用顺序：new init class instance,use render once
+        }
+        render() {
+          const { isHot } = this.state
+          console.log("who is this:", this.state)
+          return (
+            <h3 onClick={this.demo}>
+              This a class component is {isHot ? "HOT" : "Cool"}
+            </h3>
+          )
+        }
+      }
+      // render dom
+      ReactDOM.render(<MyComponent />, document.getElementById("test"))
+      /*
+        1 ReactDOM find component by tag
+        2 the component is a class component, so new class component that extends React.Component render() ,product virtual dom
+        3 render virtual dom into reality dom
+      */
+      /*
+        1 ReactDOM find component by tag
+        2 the component is a function component,so use it create virtual dom
+        3 render virtual dom into reality dom
+     */
+      let title = document.getElementById("clickDemo")
+      // title.addEventListener('click',() => {
+      //     console.log(2222222222)
+      // })
+      // title.onclick = () => {
+      //     console.log(3333333)
+      // }
+      // function demo() {
+      //     console.log(11111111111)
+      // }
+      /*
+        1.bind function on element use react repack function: instance of onClick onBlur
+        2.function name use brace include 
+    */
+    </script>
+  </body>
+</html>

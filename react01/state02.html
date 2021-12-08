@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>utility simplify state</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- import library -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+      // create virtual dom of class
+      class MyComponent extends React.Component {
+        // constructor(props) {
+        //   super(props)
+        //   this.state = { isHot: false }
+        //   this.demo = this.demo.bind(this)
+        // }
+        // don't need constructor function
+        state = { isHot: false }
+        demo = () => {
+          const n = this.state.isHot
+          this.setState({ isHot: !n })
+        }
+        // demo() {
+        
+        //     const n = this.state.isHot
+        //     this.setState({isHot: !n})
+        // }
+        render() {
+          const { isHot } = this.state
+          return (
+            <h3 onClick={this.demo}>
+              This a class component is {isHot ? "HOT" : "Cool"}
+            </h3>
+          )
+        }
+      }
+      // render dom
+      ReactDOM.render(<MyComponent />, document.getElementById("test"))
+      /*
+       
+      */
+    </script>
+  </body>
+</html>

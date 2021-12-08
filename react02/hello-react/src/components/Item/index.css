@@ -1,0 +1,14 @@
+.todo-item {
+    background-color: #eee;
+    margin: 0 0 2px 0;
+    padding: 2px;
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    color: red;
+    padding: 4px;
+}

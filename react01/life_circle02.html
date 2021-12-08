@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>component01</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+      //create component of functionality
+      //render 'hello react!' in page,the text will auto transform form clear to ethereal until disappear in 2 seconds,and immediate turn clear,repeat this circle
+      class Demo extends React.Component {
+        state = { opacity: 1, n: 1 }
+        show = () => {
+          setInterval(() => {
+            let opa = this.state.opacity
+            opa -= 0.1
+            if (opa <= 0) {
+              opa = 1
+            }
+            this.setState({ opacity: opa })
+          }, 200)
+        }
+        add = () => {
+          let n = this.state.n
+          this.setState({ n: n+1 })
+        }
+        // get props state 
+        static getDerivedStateFromProps(props,state) {
+          console.log('D---getDerivedStateFromProps',props,state);
+          // return {n: 155}
+          return props
+        }
+        getSnapshotBeforeUpdate(prevProps,prevState) {
+          console.log('getSnapshotBeforeUpdate', prevProps,prevState);
+          return 'ddddddd'
+        }
+        //after component render in page, this componentDidMount will only execute one time
+        UNSAFE_componentWillReceiveProps() {
+          console.log("componentWillReceiveProps")
+        }
+        shouldComponentUpdate() {
+          console.log("shouldComponentUpdate")
+          return true
+        }
+        UNSAFE_componentWillUpdate() {
+          console.log("componentWillUpdate")
+        }
+        componentDidUpdate(prevProps,prevState,snapshotValue) {
+          console.log("componentDidUpdate",prevProps,prevState,snapshotValue)
+        }
+
+        UNSAFE_componentWillMount() {
+          console.log("componentWillMount")
+        }
+        componentDidMount() {
+          console.log("componentDidMount")
+          //   this.timer = setInterval(() => {
+          //   let opa = this.state.opacity
+          //   opa -= 0.1
+          //   if (opa <= 0) {
+          //     opa = 1
+          //   }
+          //   this.setState({ opacity: opa })
+          // }, 200)
+        }
+        // before component unmount execute
+        componentWillUnmount() {
+          clearInterval(this.timer)
+        }
+        unmount = () => {
+          //unmount this component
+          ReactDOM.unmountComponentAtNode(document.getElementById("root"))
+        }
+        render() {
+          console.log(this.state.n,'render')
+          return (
+            <div>
+              <h3 style={{ opacity: this.state.opacity }}>Hello React!</h3>
+              <p>
+                <button onClick={this.unmount}>clear this component</button>
+              </p>
+              <button onClick={this.add}>ADD</button>&nbsp;
+              <span>{this.state.n}</span>
+            </div>
+          )
+        }
+      }
+      //render component
+
+      //parent and son component
+      class Fa extends React.Component {
+        //init data
+        state = { m: 1 }
+        add = () => {
+          let m = this.state.m
+          m += 1
+          this.setState({m})
+        }
+        render() {
+          return (
+            <div>
+              <div>Father component</div>
+              <p><button onClick={this.add}>set date to son</button></p>
+              <S m={this.state.m}/>
+            </div>
+          )
+        }
+      }
+      class S extends React.Component {
+        componentWillReceiveProps(props) {
+          console.log('s---componentWillReceiveProps', props);
+        }
+        shouldComponentUpdate() {
+          console.log('s---shouldComponentUpdate');
+          return true
+        }
+        componentWillUpdate() {
+          console.log('s---componentWillUpdate');
+        }
+        componentDidUpdate(){
+          console.log('s---componentDidUpdate');
+        }
+        render() {
+          return <div>Son component get data: {this.props.m}</div>
+        }
+      }
+      ReactDOM.render(<Demo />, document.getElementById("root"))
+      // ReactDOM.render(<Fa />, document.getElementById("root"))
+
+      /*
+        
+        */
+    </script>
+  </body>
+</html>

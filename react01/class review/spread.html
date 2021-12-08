@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spread operational character</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /*
+     1 connect array
+     2 function deliver arguments
+     3 clone object
+     4 merge object
+    */
+        let arr1 = [1,2,3],arr2 = [4,5,6]
+        console.log([...arr1,...arr2]);
+        console.log(...arr1,...arr2);
+        let p = {name: 'tom', age: 3}
+        let p1 = {...p}
+        let p2 = {...p, name: 'jerry'}
+        p.name = 'jack'
+        console.log(p,p1,p2);
+
+        function sum(...num) {
+            console.log(num);
+            return num.reduce((pre,cur) => {
+                console.log(pre,cur);
+                return pre + cur
+            })
+        }
+        console.log(sum(1,2,3,4))
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.app-container {
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+
+}
+.todo-header{
+    padding: 2px 4px;
+}
+.todo-header input {
+    width:80%;
+}

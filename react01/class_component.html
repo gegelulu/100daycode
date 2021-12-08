@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- import library -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+      // create virtual dom of class
+      class MyComponent extends React.Component {
+        render() {
+          console.log("who is this:", this)
+          return <h3>This a class component</h3>
+        }
+      }
+      // render dom
+      ReactDOM.render(<MyComponent />, document.getElementById("test"))
+      /*
+        1 ReactDOM find component by tag
+        2 the component is a class component, so new class component that extends React.Component render() ,product virtual dom
+        3 render virtual dom into reality dom
+      */
+      /*
+        1 ReactDOM find component by tag
+        2 the component is a function component,so use it create virtual dom
+        3 render virtual dom into reality dom
+     */
+    </script>
+  </body>
+</html>

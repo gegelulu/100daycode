@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ref of string</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+      // create vdom
+      class Demo extends React.Component {
+        bindInput1 = (c) => {
+          this.input1 = c
+        }
+        bindInput2 = (c) => {
+          this.input2 = c
+        }
+        showData1 = () => {
+          const { input1 } = this
+          alert(input1.value)
+        }
+        showData2 = () => {
+          const { input2 } = this
+          alert(input2.value)
+        }
+        render() {
+          return (
+            <div>
+              <input type="text" ref={this.bindInput1} />
+              &nbsp;
+              <button onClick={this.showData1}>
+                click me show left input data
+              </button>
+              &nbsp;
+              <input
+                type="text"
+                ref={this.bindInput2}
+                onBlur={this.showData2}
+              />
+            </div>
+          )
+        }
+      }
+      // render dom
+      ReactDOM.render(<Demo />, document.getElementById("root"))
+    </script>
+  </body>
+</html>

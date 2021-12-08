@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>life_circle_03</title>
+    <style>
+      .out-div {
+          width: 120px;
+          height: 150px;
+          overflow: auto;
+          background-color: skyblue;
+      }
+      .news-item {
+          height: 30px;
+      }
+  </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+      //create component of functionality
+      class NewsList extends React.Component {
+        state = { newsList: [] }
+        
+        // get props state 
+        // static getDerivedStateFromProps(props,state) {
+        //   // console.log('D---getDerivedStateFromProps',props,state);
+        //   // return {n: 155}
+        //   return props
+        // }
+        getSnapshotBeforeUpdate() {
+          
+          // console.log('getSnapshotBeforeUpdate', prevProps,prevState);
+          return this.refs.outer.scrollHeight
+        }
+        componentDidUpdate(prevProps,prevState,height) {
+          // this.refs.outer.scrollTop += this.refs.outer.scrollHeight - height;
+          this.refs.outer.scrollTop += this.refs.outer.scrollHeight - height;
+        }
+        componentDidMount() {
+          setInterval(() => {
+            const {newsList} = this.state
+            let news = 'news' + (newsList.length + 1)
+            this.setState({newsList: [...newsList,news]})
+          },1000)
+        }
+        
+        
+        // componentDidUpdate(prevProps,prevState,snapshotValue) {
+        //   console.log("componentDidUpdate",prevProps,prevState,snapshotValue)
+        // }
+
+        
+        render() {
+          console.log(this.state.n,'render')
+          return (
+            <ul className="out-div" ref="outer">
+              {
+                this.state.newsList.map((item,index) => {
+                  return <li className="news-item" key={index}>{item}</li>
+                })
+              }
+            </ul>
+          )
+        }
+      }
+      //render component
+      ReactDOM.render(<NewsList />, document.getElementById("root"))
+      // ReactDOM.render(<Fa />, document.getElementById("root"))
+
+      /*
+        
+        */
+    </script>
+  </body>
+</html>
